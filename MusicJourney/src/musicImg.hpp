@@ -11,22 +11,24 @@
 
 #include <stdio.h>
 #include "ofMain.h"
-
+#include "cameraControl.hpp"
 
 using namespace glm;
 
 class musicImg {
     
 public:
-    musicImg(vec3 start,ofImage _img,float *radius);
+    musicImg(vec3 _start,ofImage _img,float *radius);
     ~musicImg();
     void update();
     void display();
     void scatterImg();
-    void collectImg();
+    void collectImg(vec3 camloc);
     
     vector<vector<vec3>> target;
-
+    vec3 start;
+    vec3 camPos;
+    
 private:
     ofImage img;
     int imgW,imgH;

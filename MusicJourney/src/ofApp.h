@@ -32,16 +32,18 @@ class ofApp : public ofBaseApp{
     cameraControl* cc;
     
     float r;
-    static const int num=2;
+    static const int num=6;
     float theta1[num];
     float theta2[num];
     float x[num];
     float y[num];
     float z[num];
+    float radius[num];
     
     vec3 start[num];
     ofImage img[num];
-    float radius[num];
     int count;
-    float time;
+    int time;
+    
+    ofColor col[num];
 };

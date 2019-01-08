@@ -10,7 +10,7 @@
 using namespace glm;
 
 cameraControl::cameraControl(){
-    location=vec3(ofRandom(ofGetWidth()),ofRandom(ofGetHeight()),ofRandom(ofGetHeight()/2));
+    location=vec3(0,0,0);
     velocity=vec3(0,0,0);
     acceleration=vec3(0,0,0);
     r=10;
@@ -38,17 +38,6 @@ void cameraControl::update(){
     acceleration*=0;
 }
 
-void cameraControl::display(){
-    if(arrival){
-     ofSetColor(255,0,0);
-    }else if(near){
-        ofSetColor(0,255,0);
-    }else{
-        ofSetColor(0,0,255);
-    }
-    ofDrawCircle(location.x,location.y,location.z,20);
-}
-
 void cameraControl::addForce(vec3 _force){
     acceleration+=_force;
 }
@@ -60,11 +49,11 @@ void cameraControl::seek(vec3 _target){
     desired=normalize(desired);
     
     if(d<=10&&bd>10){
-        float m=ofMap(d, 0, 100, 0, maxSpeed);
+        float m=ofMap(d, 0, 10, 0, maxSpeed);
         desired*=m;
         arrival=true;
         near=false;
-    }else if(d<=100&&bd>100){
+    }else if(d<=150&&bd>150){
         float m=ofMap(d, 0, 100, 0, maxSpeed);
         desired*=m;
         near=true;
